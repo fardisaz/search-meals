@@ -9,7 +9,7 @@ export const useMealSearch = defineStore("mealSearch", {
   actions: {
     async searchMeals(value) {
       axiosClient.get(`search.php?s=${value}`).then(({ data }) => {
-        debugger;
+        console.log("this is the meal: ", data.meals);
         this.searchedMeals = data.meals;
       });
     },

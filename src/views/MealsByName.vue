@@ -14,7 +14,7 @@
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <router-link to="/">
+      <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
         <img
           class="rounded-t-xl h-48 w-full object-cover"
           :src="meal.strMealThumb"
@@ -25,28 +25,20 @@
       <div class="p-3">
         <h3 class="font-bold">{{ meal.strMeal }}</h3>
         <p class="mb-4">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate
-          ipsa ex, cupiditate ad temporibus animi perspiciatis ea rem deserunt
-          illum eveniet laborum quis doloribus nostrum eligendi recusandae?
-          Cupiditate, molestiae exercitationem!
+          {{ meal.strInstructions }}
         </p>
         <div class="flex items-center justify-between">
-          <a
-            :href="meal.strYoutube"
-            target="_blank"
-            class="px-3 py-2 rounded border-red-400 bg-red-400 hover:bg-red-600 text-white transition-colors"
-            >Youtube</a
-          >
+          <YoutubeButton :href="meal.strYoutube" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useMealSearch } from "../store/index";
 import { useRoute } from "vue-router";
+import YoutubeButton from "../components/YoutubeButton.vue";
 
 const route = useRoute();
 const keyword = ref("");
