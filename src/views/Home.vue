@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import axiosClient from "../axiosClient";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
