@@ -20,7 +20,6 @@
   </div>
 </template>
 <script setup>
-import { defineProps } from "vue";
 import YoutubeButton from "./youtubebutton.vue";
 const props = defineProps({
   meal: {

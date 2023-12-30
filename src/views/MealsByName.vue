@@ -3,31 +3,28 @@
     <input
       type="text"
       v-model="keyword"
-      class="rounded border-2 border-gray-200 w-full"
+      class="rounded border-2 bg-white border-gray-200 w-full"
       placeholder="Search for meals"
       @change="searchMeals"
     />
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem
-      v-for="meal of mealSearch.searchedMeals"
-      :key="meal.idMeal"
-      :meal="meal"
-      class="bg-white shadow rounded-xl"
-    />
-  </div>
+  <Meals :meals="mealSearch.searchedMeals" />
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
 import { useMealSearch } from "../store/index";
 import { useRoute } from "vue-router";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 
 const route = useRoute();
 const keyword = ref("");
 const mealSearch = useMealSearch();
 const searchMeals = () => {
-  mealSearch.searchMeals(keyword.value);
+  if (keyword.value) {
+    mealSearch.searchMeals(keyword.value);
+  } else {
+    mealSearch.searchedMeals = [];
+  }
 };
 onMounted(() => {
   keyword.value = route.params.name;

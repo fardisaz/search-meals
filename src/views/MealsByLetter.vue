@@ -10,20 +10,21 @@
       {{ letter }}
     </router-link>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
+  <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
     <MealItem
       v-for="meal of meals"
       :key="meal.idMeal"
       :meal="meal"
       class="bg-white shadow rounded-xl"
     />
-  </div>
+  </div> -->
+  <Meals :meals="meals" />
 </template>
 <script setup>
 import { useRoute } from "vue-router";
 import { computed, onMounted, watch } from "vue";
 import { useMealSearch } from "../store/index";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const route = useRoute();
 const mealSearch = useMealSearch();
