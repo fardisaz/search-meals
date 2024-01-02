@@ -12,7 +12,7 @@
   </div>
 </template>
 <script setup>
-import MealItem from "./mealitem.vue";
+import MealItem from "./MealItem.vue";
 
 const { meals } = defineProps({
   meals: {
