@@ -7,6 +7,9 @@ import Ingredients from "../views/Ingredients.vue";
 import MealsByName from "../views/MealsByName.vue";
 import MealDetails from "../views/MealDetails.vue";
 import GuestLayout from "../components/GuestLayout.vue";
+
+const isProduction = process.env.NODE_ENV === "production";
+const routerBase = isProduction ? "/search-meals/" : "/";
 const routes = [
   {
     path: "/",
@@ -51,7 +54,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(routerBase),
   routes,
 });
 
