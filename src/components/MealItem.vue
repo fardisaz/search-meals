@@ -20,7 +20,7 @@
   </div>
 </template>
 <script setup>
-import YoutubeButton from "./youtubeButton.vue";
+import YoutubeButton from "./YoutubeButton.vue";
 import { truncateWords } from "../filters/index";
 const props = defineProps({
   meal: {
