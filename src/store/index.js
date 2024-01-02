@@ -6,6 +6,7 @@ export const useMealSearch = defineStore("mealSearch", {
     mealsByLetter: [],
     mealsByIngredients: [],
     loading: false,
+    ingredient: {},
   }),
   getters: {},
   actions: {
@@ -23,6 +24,9 @@ export const useMealSearch = defineStore("mealSearch", {
       axiosClient.get(`filter.php?i=${value}`).then(({ data }) => {
         this.mealsByIngredients = data.meals;
       });
+    },
+    setIngredient(value) {
+      this.ingredient = value;
     },
   },
 });
